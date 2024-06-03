@@ -7,11 +7,13 @@ PathoPredictNet is a biomedical vision-language foundation model that has been p
 
 # Usage
 
+```python
 import pydicom
 import torch
+import numpy as np
 from transformers import CLIPProcessor, CLIPModel
 
-model_name = "pathopredict_model"  # Replace with the actual model name
+model_name = "pathopredict-model"  # Replace with the actual model name
 model = CLIPModel.from_pretrained(model_name)
 processor = CLIPProcessor.from_pretrained(model_name)
 
@@ -36,7 +38,7 @@ def vqa_with_biomedclip(dicom_image_path, question):
     image = load_dicom_image(dicom_image_path)
     
     # Encode the question and image
-    inputs = processor(text=question, images=image, return_tensors="pt", padding=True)
+    inputs = processor(text=[question], images=image, return_tensors="pt", padding=True)
     
     # Perform inference
     outputs = model(**inputs)
@@ -47,7 +49,7 @@ def vqa_with_biomedclip(dicom_image_path, question):
     
     # Extract the most relevant information (assuming VQA task requires the text logits)
     answer_index = logits_per_text.argmax()
-    answer = question[answer_index]
+    answer = question  # This should be modified to provide a proper answer based on the model outputs
     
     return answer
 
@@ -56,3 +58,4 @@ question = "What abnormality is seen in this image?"
 
 answer = vqa_with_biomedclip(dicom_image_path, question)
 print(f"Answer: {answer}")
+```
