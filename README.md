@@ -30,9 +30,9 @@ def load_dicom_image(file_path):
         image = np.stack([image] * 3, axis=-1)
     return image
 
-def vqa_with_biomedclip(dicom_image_path, question):
+def vqa_with_image(dicom_image_path, question):
     """
-    Perform Visual Question Answering on a DICOM image using the BiomedCLIP model.
+    Perform Visual Question Answering on a DICOM image using the PathoPredictNet model.
     """
     # Load and preprocess the image
     image = load_dicom_image(dicom_image_path)
@@ -56,6 +56,6 @@ def vqa_with_biomedclip(dicom_image_path, question):
 dicom_image_path = "path_to_dicom_image.dcm"  # Replace with your DICOM image path
 question = "What abnormality is seen in this image?"
 
-answer = vqa_with_biomedclip(dicom_image_path, question)
+answer = vqa_with_image(dicom_image_path, question)
 print(f"Answer: {answer}")
 ```
