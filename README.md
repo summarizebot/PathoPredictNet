@@ -3,4 +3,6 @@ PathoPredictNet is a biomedical vision-language foundation model that has been p
 
 
 # Model
-[GitHub Pages](https://pages.github.com/)
+[Download Model](https://drive.google.com/file/d/1yNCS9FrB8EP9-7gbTY6FAVYS8SRU9JAJ/view?usp=sharing)
+
+# Usage
